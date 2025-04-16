@@ -19,7 +19,7 @@ private:
     //iar valoare lui copiata in campul constant serieCaroserie
     //astfel, prima masina va avea serieCaroserie 1, urmatoarea seria 2 s.a.m.d
     //constructorul de copiere va copia valoarea ca atare (dintr-un obiect in altul)
-    const int serieCaroserie = 0;
+    const int serieCaroserie = 1;
     string marca;
     string model;
     int putere;
@@ -68,11 +68,17 @@ public:
         strcpy_s(this->taraDeProductie, strlen("Necunoscuta") + 1, "Necunoscuta");
         this->putere = 0;
         this->pret = 5000;
-        this->distanteParcurse = new float[nrDrumuri];
-        this->nrDrumuri = nrDrumuri;
-        for (int i = 0; i < nrDrumuri; i++) {
-            this->distanteParcurse[i] = distante[i];
+        if (nrDrumuri > 0) {
+            this->distanteParcurse = new float[nrDrumuri];
+            this->nrDrumuri = nrDrumuri;
+            for (int i = 0; i < nrDrumuri; i++) {
+                this->distanteParcurse[i] = distante[i];
+            }
+        } else {
+            this->distanteParcurse = nullptr;
+            this->nrDrumuri = 0;
         }
+        this->nrDrumuri = nrDrumuri;
     }
 
     //4. Adaugati un destructor in clasa care sterge zonele de memorie anterior alocate
@@ -89,7 +95,7 @@ public:
         // this->model = nullptr;
 
         delete[] this->taraDeProductie;
-        this->taraDeProductie = nullptr;
+        // this->taraDeProductie = nullptr;
     }
 
     //5. Adaugati clasei un constructor de copiere astfel incat
@@ -133,12 +139,16 @@ public:
     }
 
     float *getDistanteParcurse() {
-        float *copie = new float[this->nrDrumuri];
-        for (int i = 0; i < this->nrDrumuri; i++) {
-            copie[i] = this->distanteParcurse[i];
-        }
+        if (this->distanteParcurse != nullptr) {
+            float *copie = new float[this->nrDrumuri];
+            for (int i = 0; i < this->nrDrumuri; i++) {
+                copie[i] = this->distanteParcurse[i];
+            }
 
-        return copie;
+            return copie;
+        } else {
+            return nullptr;
+        }
     }
 
     //8. Modificati setter-ul pentru vectorul de distante

@@ -19,7 +19,7 @@ private:
     //iar valoare lui copiata in campul constant serieCaroserie
     //astfel, prima masina va avea serieCaroserie 1, urmatoarea seria 2 s.a.m.d
     //constructorul de copiere va copia valoarea ca atare (dintr-un obiect in altul)
-    const int serieCaroserie = 1;
+    const int serieCaroserie = 0;
     string marca;
     string model;
     int putere;
@@ -33,7 +33,7 @@ public:
     //1. Modificati constructorul implicit din clasa Autoturism de mai sus
     //acesta va initializa marca cu "Necunoscuta", modelul cu "Necunoscut"
     //puterea cu 0, pretul cu 5000, vectorul de distante cu NULL si nrDrumuri cu 0
-    Autoturism() : serieCaroserie(numarAutoturisme++) {
+    Autoturism() : serieCaroserie(++numarAutoturisme) {
         this->marca = "Necunoscuta";
         this->model = "Necunoscut";
         this->taraDeProductie = new char[strlen("Necunoscuta") + 1];
@@ -47,7 +47,7 @@ public:
     //2. Modificati constructorul cu 3 parametri: marca, model, putere
     //acesta va initializa cele 3 atribute cu valorile primite
     //restul de atribute nu trebuie sa ramana neinitializate si vor folosi aceleasi valori implicite ca mai sus
-    Autoturism(string marca, string model, int putere) : serieCaroserie(numarAutoturisme++) {
+    Autoturism(string marca, string model, int putere) : serieCaroserie(++numarAutoturisme) {
         this->marca = std::move(marca);
         this->model = std::move(model);
         this->taraDeProductie = new char[strlen("Necunoscuta") + 1];
@@ -61,7 +61,7 @@ public:
     //3. Modificati constructorul cu 4 parametri pentru a copia valorile
     //primite drept parametri in atributele clasei
     //constructorul nu va lasa atribute neinitializate
-    Autoturism(string marca, string model, float *distante, int nrDrumuri) : serieCaroserie(numarAutoturisme++) {
+    Autoturism(string marca, string model, float *distante, int nrDrumuri) : serieCaroserie(++numarAutoturisme) {
         this->marca = std::move(marca);
         this->model = std::move(model);
         this->taraDeProductie = new char[strlen("Necunoscuta") + 1];
@@ -103,7 +103,8 @@ public:
         this->marca = a.marca;
         this->model = a.model;
         this->putere = a.putere;
-        this->taraDeProductie = a.taraDeProductie;
+        this->taraDeProductie = new char[strlen(a.taraDeProductie) + 1];
+        strcpy_s(this->taraDeProductie, strlen(a.taraDeProductie) + 1, a.taraDeProductie);
         this->pret = a.pret;
         this->nrDrumuri = a.nrDrumuri;
         this->distanteParcurse = new float[a.nrDrumuri];
@@ -142,11 +143,9 @@ public:
             float *copie = new float[this->nrDrumuri];
             for (int i = 0; i < this->nrDrumuri; i++) {
                 copie[i] = this->distanteParcurse[i];
-            }
-
-            return copie;
+            } return copie;
         } else {
-            return nullptr;
+            return new float[nrDrumuri];
         }
     }
 

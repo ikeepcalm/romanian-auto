@@ -75,7 +75,7 @@ public:
                 this->distanteParcurse[i] = distante[i];
             }
         } else {
-            this->distanteParcurse = new float[];
+            this->distanteParcurse = new float[10];
             this->nrDrumuri = 0;
         }
         this->nrDrumuri = nrDrumuri;

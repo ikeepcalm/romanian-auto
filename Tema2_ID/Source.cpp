@@ -75,7 +75,7 @@ public:
                 this->distanteParcurse[i] = distante[i];
             }
         } else {
-            this->distanteParcurse = nullptr;
+            this->distanteParcurse = new float[];
             this->nrDrumuri = 0;
         }
         this->nrDrumuri = nrDrumuri;
@@ -93,8 +93,7 @@ public:
         // this->marca = nullptr;
         // delete[] this->model;
         // this->model = nullptr;
-
-        delete[] this->taraDeProductie;
+        //delete[] this->taraDeProductie;
         // this->taraDeProductie = nullptr;
     }
 

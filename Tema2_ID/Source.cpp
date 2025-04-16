@@ -68,15 +68,11 @@ public:
         strcpy_s(this->taraDeProductie, strlen("Necunoscuta") + 1, "Necunoscuta");
         this->putere = 0;
         this->pret = 5000;
-        if (nrDrumuri > 0) {
-            this->distanteParcurse = new float[nrDrumuri];
-            this->nrDrumuri = nrDrumuri;
-            for (int i = 0; i < nrDrumuri; i++) {
-                this->distanteParcurse[i] = distante[i];
-            }
+        this->nrDrumuri = nrDrumuri;
+        if (distante == nullptr) {
+            this->distanteParcurse = nullptr;
         } else {
-            this->distanteParcurse = new float[10];
-            this->nrDrumuri = 0;
+            this->distanteParcurse = distante;
         }
         this->nrDrumuri = nrDrumuri;
     }

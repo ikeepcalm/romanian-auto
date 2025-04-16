@@ -37,7 +37,7 @@ public:
         this->marca = "Necunoscuta";
         this->model = "Necunoscut";
         this->taraDeProductie = new char[strlen("Necunoscuta") + 1];
-        strncpy(this->taraDeProductie, "Necunoscuta", strlen("Necunoscuta") + 1);
+        strcpy_s(this->taraDeProductie, strlen("Necunoscuta") + 1, "Necunoscuta");
         this->putere = 0;
         this->pret = 5000;
         this->distanteParcurse = nullptr;
@@ -51,7 +51,7 @@ public:
         this->marca = std::move(marca);
         this->model = std::move(model);
         this->taraDeProductie = new char[strlen("Necunoscuta") + 1];
-        strncpy(this->taraDeProductie, "Necunoscuta", strlen("Necunoscuta") + 1);
+        strcpy_s(this->taraDeProductie, strlen("Necunoscuta") + 1, "Necunoscuta");
         this->putere = putere;
         this->pret = 5000;
         this->distanteParcurse = nullptr;
@@ -65,7 +65,7 @@ public:
         this->marca = std::move(marca);
         this->model = std::move(model);
         this->taraDeProductie = new char[strlen("Necunoscuta") + 1];
-        strncpy(this->taraDeProductie, "Necunoscuta", strlen("Necunoscuta") + 1);
+        strcpy_s(this->taraDeProductie, strlen("Necunoscuta") + 1, "Necunoscuta");
         this->putere = 0;
         this->pret = 5000;
         this->distanteParcurse = new float[nrDrumuri];
@@ -174,7 +174,7 @@ public:
         if (tara != nullptr) {
             delete[] this->taraDeProductie;
             this->taraDeProductie = new char[strlen(tara) + 1];
-            strcpy(this->taraDeProductie, tara);
+            strcpy_s(this->taraDeProductie, strlen(tara) + 1, tara);
         } else {
             std::cout << "Tara de productie nu poate fi null!" << std::endl;
         }

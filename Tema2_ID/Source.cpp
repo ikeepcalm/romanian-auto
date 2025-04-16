@@ -70,7 +70,6 @@ public:
         this->pret = 5000;
         this->nrDrumuri = nrDrumuri < 0 ? 0 : nrDrumuri;
         this->distanteParcurse = distante == nullptr ? nullptr : distante;
-        this->nrDrumuri = nrDrumuri;
     }
 
     //4. Adaugati un destructor in clasa care sterge zonele de memorie anterior alocate

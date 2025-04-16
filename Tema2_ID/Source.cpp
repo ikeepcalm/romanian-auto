@@ -68,12 +68,8 @@ public:
         strcpy_s(this->taraDeProductie, strlen("Necunoscuta") + 1, "Necunoscuta");
         this->putere = 0;
         this->pret = 5000;
-        this->nrDrumuri = nrDrumuri;
-        if (distante == nullptr) {
-            this->distanteParcurse = nullptr;
-        } else {
-            this->distanteParcurse = distante;
-        }
+        this->nrDrumuri = nrDrumuri < 0 ? 0 : nrDrumuri;
+        this->distanteParcurse = distante == nullptr ? nullptr : distante;
         this->nrDrumuri = nrDrumuri;
     }
 

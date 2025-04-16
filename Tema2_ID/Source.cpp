@@ -37,7 +37,7 @@ public:
         this->marca = "Necunoscuta";
         this->model = "Necunoscut";
         this->taraDeProductie = new char[strlen("Necunoscuta") + 1];
-        strcpy(this->taraDeProductie, "Necunoscuta");
+        strncpy(this->taraDeProductie, "Necunoscuta", strlen("Necunoscuta") + 1);
         this->putere = 0;
         this->pret = 5000;
         this->distanteParcurse = nullptr;
@@ -51,7 +51,7 @@ public:
         this->marca = std::move(marca);
         this->model = std::move(model);
         this->taraDeProductie = new char[strlen("Necunoscuta") + 1];
-        strcpy(this->taraDeProductie, "Necunoscuta");
+        strncpy(this->taraDeProductie, "Necunoscuta", strlen("Necunoscuta") + 1);
         this->putere = putere;
         this->pret = 5000;
         this->distanteParcurse = nullptr;
@@ -65,7 +65,7 @@ public:
         this->marca = std::move(marca);
         this->model = std::move(model);
         this->taraDeProductie = new char[strlen("Necunoscuta") + 1];
-        strcpy(this->taraDeProductie, "Necunoscuta");
+        strncpy(this->taraDeProductie, "Necunoscuta", strlen("Necunoscuta") + 1);
         this->putere = 0;
         this->pret = 5000;
         this->distanteParcurse = new float[nrDrumuri];
@@ -271,11 +271,13 @@ int main() {
 
     // 1
     Autoturism car1;
-    cout << "Constructor implicit: " << car1.getMarca() << ", " << car1.getPutere() << ", " << car1.getTaraDeProductie() << endl;
+    cout << "Constructor implicit: " << car1.getMarca() << ", " << car1.getPutere() << ", " << car1.getTaraDeProductie()
+            << endl;
 
     // 2
     Autoturism car2("Toyota", "Corolla", 120);
-    cout << "Constructor explicit: " << car2.getMarca() << ", " << car2.getPutere() << ", " << car2.getTaraDeProductie() << endl;
+    cout << "Constructor explicit: " << car2.getMarca() << ", " << car2.getPutere() << ", " << car2.getTaraDeProductie()
+            << endl;
 
     // 3
     float distante[] = {100.5, 200.0, 300.75};
